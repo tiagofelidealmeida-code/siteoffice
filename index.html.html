@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio W Fernandes | Salão de Beleza Premium em Belo Horizonte</title>
+    <meta name="description" content="Salão de beleza premium em Belo Horizonte, referência em loiros, morenas iluminadas, corte moderno, visagismo, Nail Design e Hair Spa. Agende sua experiência.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Playfair Display & Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            nude: '#F9F6F0',
+                            nudeDark: '#E8DFD8',
+                            dark: '#121212',
+                            darkGray: '#1E1E1E',
+                            accent: '#C5A059'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0d0d0d;
+            color: #f3f3f3;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-glass {
+            background: rgba(18, 18, 18, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0D0 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%);
+        }
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        .gold-border-focus:focus {
+            border-color: #D4AF37;
+            outline: none;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-black">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-glass border-b border-white/10 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex flex-col group">
+                <span class="font-serif-title text-xl sm:text-2xl font-bold tracking-widest text-white group-hover:text-brand-gold transition-colors">
+                    STUDIO W FERNANDES
+                </span>
+            </a>
+
+            <!-- Desktop Menu Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-widest text-gray-300">
+                <a href="#inicio" class="hover:text-brand-gold transition-colors">Início</a>
+                <a href="#servicos" class="hover:text-brand-gold transition-colors">Serviços</a>
+                <a href="#sobre" class="hover:text-brand-gold transition-colors">O Conceito</a>
+                <a href="#galeria" class="hover:text-brand-gold transition-colors">Resultados</a>
+                <a href="#depoimentos" class="hover:text-brand-gold transition-colors">Avaliações</a>
+                <a href="#contato" class="hover:text-brand-gold transition-colors">Localização</a>
+            </nav>
+
+            <!-- Actions Header -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleDrawer()" class="md:hidden p-2 text-white hover:text-brand-gold focus:outline-none" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE DRAWER NAVIGATION -->
+    <div id="drawer-backdrop" onclick="toggleDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="drawer" class="fixed top-0 right-0 w-4/5 max-w-xs h-full bg-brand-darkGray border-l border-white/10 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between p-6">
+        <div>
+            <div class="flex justify-between items-center pb-6 border-b border-white/10">
+                <span class="font-serif-title text-lg font-bold text-white tracking-widest">MENU</span>
+                <button onclick="toggleDrawer()" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+            </div>
+            <nav class="mt-8 flex flex-col gap-6 text-sm font-medium uppercase tracking-wider text-gray-300">
+                <a href="#inicio" onclick="toggleDrawer()" class="hover:text-brand-gold">Início</a>
+                <a href="#servicos" onclick="toggleDrawer()" class="hover:text-brand-gold">Serviços</a>
+                <a href="#sobre" onclick="toggleDrawer()" class="hover:text-brand-gold">Sobre o Salão</a>
+                <a href="#galeria" onclick="toggleDrawer()" class="hover:text-brand-gold">Galeria de Resultados</a>
+                <a href="#depoimentos" onclick="toggleDrawer()" class="hover:text-brand-gold">Avaliações do Google</a>
+                <a href="#contato" onclick="toggleDrawer()" class="hover:text-brand-gold">Endereço & Contato</a>
+            </nav>
+        </div>
+        <div class="space-y-4">
+            <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20no%20Studio%20W%20Fernandes." target="_blank" onclick="toggleDrawer()" class="w-full py-3 text-xs font-bold uppercase tracking-wider text-black gold-gradient-bg rounded-full text-center block">
+                Agendar Experiência
+            </a>
+            <div class="flex justify-center gap-4 text-gray-400 text-lg pt-2">
+                <a href="https://instagram.com" target="_blank" class="hover:text-brand-gold"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com" target="_blank" class="hover:text-brand-gold"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://whatsapp.com" target="_blank" class="hover:text-brand-gold"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+        <!-- Hero Background Overlay & Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Studio W Fernandes Salão de Beleza" 
+                 class="w-full h-full object-cover object-center scale-105 filter brightness-50 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/60 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-8">
+            <!-- Badge / Prova Social Google -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+                <div class="flex text-yellow-400 text-xs gap-1">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="text-xs text-gray-200 font-medium">4.9 no Google</span>
+                <span class="text-gray-500">•</span>
+                <span class="text-xs text-brand-gold font-semibold">+1.000 transformações</span>
+            </div>
+
+            <!-- Título Principal -->
+            <h1 class="font-serif-title text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-tight">
+                Descubra a beleza de <br class="hidden sm:inline">
+                <span class="italic font-light gold-gradient-text">serviços de alta qualidade</span>
+            </h1>
+
+            <!-- Subtítulo / Proposta de Valor -->
+            <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-gray-300 font-light leading-relaxed">
+                Somos um espaço dedicado a realçar a sua essência e renovar a sua autoestima. Com uma equipe de profissionais qualificados e antenados com as últimas tendências, oferecemos uma experiência completa de cuidado e relaxamento. Utilizamos produtos de alta qualidade para garantir resultados surpreendentes e a saúde dos seus cabelos.
+            </p>
+
+            <!-- CTA principal - WhatsApp e Instagram -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20no%20Studio%20W%20Fernandes." target="_blank" class="w-full sm:w-auto px-8 py-4 text-sm font-bold uppercase tracking-widest text-white bg-emerald-600 hover:bg-emerald-500 rounded-full transition-all flex items-center justify-center gap-3 shadow-xl shadow-emerald-600/20 transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-emerald-200 text-xl font-bold"></i> FALAR NO WHATSAPP
+                </a>
+                <a href="https://instagram.com/weudesfernandes.wf" target="_blank" class="w-full sm:w-auto px-8 py-4 text-sm font-bold uppercase tracking-widest text-white bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-90 rounded-full transition-all flex items-center justify-center gap-3 shadow-xl shadow-pink-500/20 transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-instagram text-xl font-bold"></i> INSTAGRAM
+                </a>
+            </div>
+
+            <!-- Highlights Quick Stats -->
+            <div class="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-white/10 max-w-4xl mx-auto">
+                <div class="p-4 text-center">
+                    <p class="font-serif-title text-2xl sm:text-3xl font-bold text-brand-gold">100%</p>
+                    <p class="text-xs uppercase tracking-wider text-gray-400 mt-1">Visagismo Personalizado</p>
+                </div>
+                <div class="p-4 text-center">
+                    <p class="font-serif-title text-2xl sm:text-3xl font-bold text-brand-gold">Especializado</p>
+                    <p class="text-xs uppercase tracking-wider text-gray-400 mt-1">em diversos tipos de cabelos</p>
+                </div>
+                <div class="p-4 text-center">
+                    <p class="font-serif-title text-xl sm:text-2xl font-bold text-brand-gold">Serviços de Alta Qualidade</p>
+                    <p class="text-xs uppercase tracking-wider text-gray-400 mt-1">Produtos de Luxo</p>
+                </div>
+                <div class="p-4 text-center">
+                    <p class="font-serif-title text-2xl sm:text-3xl font-bold text-brand-gold">Bairro</p>
+                    <p class="text-xs uppercase tracking-wider text-gray-400 mt-1">Santa Lúcia - BH</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILARES DE SERVIÇOS (CARROSSEL / CARDS) -->
+    <section id="servicos" class="py-24 bg-brand-dark relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-gold">Nossa Expertise</span>
+                <h2 class="font-serif-title text-3xl sm:text-4xl font-normal text-white mt-2">
+                    Pilares de Excelência
+                </h2>
+                <div class="w-12 h-0.5 bg-brand-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: Mechas -->
+                <div class="group relative rounded-2xl overflow-hidden bg-brand-darkGray border border-white/10 hover:border-brand-gold/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="mechas.jpg" 
+                             alt="Mechas" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-darkGray via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider text-brand-gold">
+                            Carro Chefe
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between text-center items-center">
+                        <div>
+                            <h3 class="font-serif-title text-xl font-medium text-white mb-2">Mechas</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                                Transformação personalizada com técnicas avançadas em loiros e morenas iluminadas, garantindo brilho, saúde e harmonia ao seu tom natural.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20de%20Mechas." target="_blank" class="w-full py-3 rounded-lg border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-black font-semibold text-xs uppercase tracking-wider transition-all duration-300 text-center block">
+                            Conhecer serviços
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Coloração -->
+                <div class="group relative rounded-2xl overflow-hidden bg-brand-darkGray border border-white/10 hover:border-brand-gold/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="tintura.jpg" 
+                             alt="Coloração" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-darkGray via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between text-center items-center">
+                        <div>
+                            <h3 class="font-serif-title text-xl font-medium text-white mb-2">Coloração</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                                Cobertura perfeita e tonalização com produtos de alta performance que protegem e renovam a vitalidade dos fios.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20de%20Coloração." target="_blank" class="w-full py-3 rounded-lg border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-black font-semibold text-xs uppercase tracking-wider transition-all duration-300 text-center block">
+                            Saiba mais
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Hidratação -->
+                <div class="group relative rounded-2xl overflow-hidden bg-brand-darkGray border border-white/10 hover:border-brand-gold/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="hidratacao.jpg" 
+                             alt="Hidratação" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-darkGray via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between text-center items-center">
+                        <div>
+                            <h3 class="font-serif-title text-xl font-medium text-white mb-2">Hidratação</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                                Tratamentos de nutrição profunda e reconstrução intensiva para devolver o brilho, a maciez e o movimento natural dos cabelos.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20de%20Hidratação." target="_blank" class="w-full py-3 rounded-lg border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-black font-semibold text-xs uppercase tracking-wider transition-all duration-300 text-center block">
+                            Explorar experiência
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Mega Hair -->
+                <div class="group relative rounded-2xl overflow-hidden bg-brand-darkGray border border-white/10 hover:border-brand-gold/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="mega.jpg" 
+                             alt="Mega Hair" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-darkGray via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-brand-gold text-black px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                            Especialidade
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between text-center items-center">
+                        <div>
+                            <h3 class="font-serif-title text-xl font-medium text-white mb-2">Mega Hair</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                                Técnicas imperceptíveis de mechas, alongamento e preenchimento de pontas para garantir volume natural e caimento impecável.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20de%20Mega%20Hair." target="_blank" class="w-full py-3 rounded-lg border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-black font-semibold text-xs uppercase tracking-wider transition-all duration-300 text-center block">
+                            Saiba mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECÇÃO INSTITUCIONAL / SOBRE NÓS -->
+    <section id="sobre" class="py-24 bg-[#101010] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Imagem Sobre Nós -->
+                <div class="relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img id="especialista-img" src="fotoperfil.jpg"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1000&auto=format&fit=crop';"
+                             alt="Weudes Fernandes - Especialista Studio W Fernandes" 
+                    </div>
+                    <!-- Elemento Decorativo -->
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-brand-gold/10 rounded-full blur-3xl"></div>
+                </div>
+
+                <!-- Conteúdo Institucional -->
+                <div class="space-y-6">
+                    <span class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-gold">Nossa Metodologia</span>
+                    <h2 class="font-serif-title text-3xl sm:text-4xl font-normal text-white leading-tight">
+                        Muito além da estética: a arte da transformação e presença.
+                    </h2>
+                    
+                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                        No <strong class="text-white font-medium">Studio W Fernandes</strong>, acreditamos que a cor do cabelo é a moldura da identidade de uma mulher. Por isso, aliamos visagismo de alta precisão ao respeito absoluto pela saúde da fibra capilar.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="p-2 bg-brand-gold/20 text-brand-gold rounded-lg mt-0.5">
+                                <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Consultoria de Visagismo</h4>
+                                <p class="text-xs text-gray-400 mt-1">Análise do tom de pele, contraste natural e estilo de vida para a escolha do tom ideal.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="p-2 bg-brand-gold/20 text-brand-gold rounded-lg mt-0.5">
+                                <i class="fa-solid fa-shield-halved text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Saúde dos Fios em 1º Lugar</h4>
+                                <p class="text-xs text-gray-400 mt-1">Protocolos pré e pós-descoloração importados para preservação da integridade do cabelo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Studio%20W%20Fernandes." target="_blank" class="px-8 py-4 text-xs font-bold uppercase tracking-widest text-black gold-gradient-bg rounded-full hover:opacity-90 transition-all text-center">
+                            CONHEÇA O STUDIO W FERNANDES
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA DE RESULTADOS (PROVA SOCIAL) -->
+    <section id="galeria" class="py-24 bg-brand-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-gold">Resultados Reais</span>
+                <h2 class="font-serif-title text-3xl sm:text-4xl font-normal text-white mt-2">
+                    Galeria de Transformações
+                </h2>
+                <div class="w-12 h-0.5 bg-brand-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Grid de Fotos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <!-- Item 1 -->
+                <div class="gallery-item loiros relative rounded-xl overflow-hidden group border border-white/10 h-96">
+                    <img src="imagem3.jpg" alt="meninacorterosa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+
+                <!-- Item 2 -->
+                <div class="gallery-item morenas relative rounded-xl overflow-hidden group border border-white/10 h-96">
+                    <img src="imagem2.jpg" alt="Morena Iluminada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+
+                <!-- Item 3 -->
+                <div class="gallery-item loiros relative rounded-xl overflow-hidden group border border-white/10 h-96">
+                    <img src="imagem4.jpg" alt="Loiro Perolado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+
+                <!-- Item 4 -->
+                <div class="gallery-item cortes relative rounded-xl overflow-hidden group border border-white/10 h-96">
+                    <img src="imagem5.jpg" alt="Corte Moderno" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+
+                <!-- Item 5 -->
+                <div class="gallery-item morenas relative rounded-xl overflow-hidden group border border-white/10 h-96">
+                    <img src="imagem6.jpg" alt="Morena Iluminada Caramelo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+
+                <!-- Item 6 -->
+                <div class="gallery-item loiros relative rounded-xl overflow-hidden group border border-white/10 h-96">
+                    <img src="imagem7.jpg" alt="Loiro Vanila" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AVALIAÇÕES DO GOOGLE / DEPOIMENTOS -->
+    <section id="depoimentos" class="py-24 bg-[#0d0d0d] border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="flex items-center justify-center gap-2 mb-2">
+                    <i class="fa-brands fa-google text-2xl text-white"></i>
+                    <span class="font-bold text-white text-lg">Avaliações do Google</span>
+                </div>
+                <h2 class="font-serif-title text-3xl sm:text-4xl font-normal text-white">
+                    O que dizem nossas clientes
+                </h2>
+                <div class="flex justify-center items-center gap-2 mt-3">
+                    <div class="flex text-yellow-400 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="text-sm text-gray-300 font-semibold">4.9 / 5.0 com mais de 800 avaliações</span>
+                </div>
+            </div>
+
+            <!-- Cards Depoimentos -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-brand-darkGray p-8 rounded-2xl border border-white/10 flex flex-col justify-between relative">
+                    <div>
+                        <div class="flex text-yellow-400 text-xs gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic">
+                            "A melhor experiência de salão em Belo Horizonte! Fiz minhas mechas loiras e meu cabelo continua super saudável. A equipe de visagismo realmente entende o que combina conosco."
+                        </p>
+                    </div>
+                    <div class="mt-6 flex items-center gap-4 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold font-bold flex items-center justify-center text-sm">
+                            MC
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-white">Mariana Costa</h4>
+                            <span class="text-xs text-gray-500">Cliente há 2 anos • Avaliado no Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="bg-brand-darkGray p-8 rounded-2xl border border-white/10 flex flex-col justify-between relative">
+                    <div>
+                        <div class="flex text-yellow-400 text-xs gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic">
+                            "Atendimento impecável no Santa Lúcia. O ambiente é chique, aconchegante e o resultado da minha iluminação morena superou todas as expectativas. Recomendo de olhos fechados!"
+                        </p>
+                    </div>
+                    <div class="mt-6 flex items-center gap-4 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold font-bold flex items-center justify-center text-sm">
+                            FT
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-white">Fernanda Tavares</h4>
+                            <span class="text-xs text-gray-500">Cliente Recente • Avaliado no Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="bg-brand-darkGray p-8 rounded-2xl border border-white/10 flex flex-col justify-between relative">
+                    <div>
+                        <div class="flex text-yellow-400 text-xs gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic">
+                            "Consegui fazer o penteado de madrinha e a esmaltação no mesmo lugar, com um atendimento impecável. O padrão Studio W Fernandes é realmente incomparável! Já virei cliente fiel."
+                        </p>
+                    </div>
+                    <div class="mt-6 flex items-center gap-4 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold font-bold flex items-center justify-center text-sm">
+                            LA
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-white">Luiza Alvarenga</h4>
+                            <span class="text-xs text-gray-500">Cliente VIP • Avaliado no Google</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCALIZAÇÃO & CONTATO -->
+    <section id="contato" class="py-24 bg-brand-dark relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Informações do Salão -->
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-gold">Localização & Agendamentos</span>
+                        <h2 class="font-serif-title text-3xl sm:text-4xl font-normal text-white mt-2">
+                            Venha Viver a Experiência
+                        </h2>
+                    </div>
+
+                    <div class="space-y-6 text-gray-300">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-gold">
+                                <i class="fa-solid fa-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm uppercase tracking-wider">Endereço</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Rua Harley, 777 - Santa Lúcia<br>
+                                    Belo Horizonte - MG
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-gold">
+                                <i class="fa-regular fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm uppercase tracking-wider">Horário de Funcionamento</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Terça-feira a Sábado: 09h às 19h<br>
+                                    <span class="text-xs text-gray-500">Domingo e Segunda: Fechado</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-gold">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm uppercase tracking-wider">Contato Direto</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    (31) 98566-8633
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20no%20Studio%20W%20Fernandes." target="_blank" class="px-8 py-4 text-xs font-bold uppercase tracking-widest text-black gold-gradient-bg rounded-full hover:opacity-90 transition-all shadow-lg shadow-brand-gold/10 flex items-center justify-center">
+                            AGENDAR MEU HORÁRIO
+                        </a>
+                        <a href="https://maps.app.goo.gl/8o4SLacq8YG9SZ8Z6" target="_blank" class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-white border border-white/20 rounded-full hover:bg-white/10 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-map-pin"></i> Abrir no GPS
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mapa Interativo -->
+                <div class="h-96 rounded-2xl overflow-hidden border border-white/10 relative shadow-2xl bg-brand-darkGray">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Rua%20Harley%20777%20Santa%20L%C3%BAcia,%20Belo%20Horizonte%20-%20MG&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(0.8) contrast(1.2);" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-white/10 text-xs flex justify-between items-center pointer-events-none">
+                        <span class="text-gray-300"><i class="fa-solid fa-car mr-2 text-brand-gold"></i>Estacionamento conveniente próximo</span>
+                        <span class="text-brand-gold font-semibold uppercase">Santa Lúcia - BH</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-12 text-gray-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                
+                <!-- Coluna 1: Marca -->
+                <div class="space-y-4 md:col-span-1">
+                    <a href="#" class="flex flex-col">
+                        <span class="font-serif-title text-xl font-bold tracking-widest text-white">STUDIO W FERNANDES</span>
+                        <span class="text-[9px] tracking-[0.3em] uppercase text-brand-gold font-light">BELO HORIZONTE</span>
+                    </a>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Referência em transformações capilares premium, visagismo e saúde dos fios em Belo Horizonte.
+                    </p>
+                </div>
+
+                <!-- Coluna 2: Navegação Rápida -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-4">Navegação</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#inicio" class="hover:text-brand-gold transition-colors">Início</a></li>
+                        <li><a href="#sobre" class="hover:text-brand-gold transition-colors">Quem Somos</a></li>
+                        <li><a href="#servicos" class="hover:text-brand-gold transition-colors">Serviços Premium</a></li>
+                        <li><a href="#galeria" class="hover:text-brand-gold transition-colors">Galeria de Fotos</a></li>
+                        <li><a href="#depoimentos" class="hover:text-brand-gold transition-colors">Avaliações</a></li>
+                        <li><a href="#contato" class="hover:text-brand-gold transition-colors">Contato & Endereço</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Serviços -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-4">Especialidades</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#servicos" class="hover:text-brand-gold transition-colors">Mechas</a></li>
+                        <li><a href="#servicos" class="hover:text-brand-gold transition-colors">Coloração</a></li>
+                        <li><a href="#servicos" class="hover:text-brand-gold transition-colors">Hidratação Profunda</a></li>
+                        <li><a href="#servicos" class="hover:text-brand-gold transition-colors">Mega Hair</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4: Informações de Segurança/LGPD -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-4">Atendimento VIP</h4>
+                    <p class="text-gray-400 mb-4">
+                        Atendimento exclusivo mediante agendamento prévio via WhatsApp.
+                    </p>
+                    <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20no%20Studio%20W%20Fernandes." target="_blank" class="w-full py-2.5 text-xs font-bold uppercase tracking-wider text-black gold-gradient-bg rounded-lg text-center block">
+                        Agendar Horário
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Legal -->
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-500 text-[11px]">
+                <p>© 2026 Studio W Fernandes Belo Horizonte. Todos os direitos reservados.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-gray-300">Termos de Uso</a>
+                    <a href="#" class="hover:text-gray-300">Políticas de Privacidade</a>
+                    <a href="#" class="hover:text-gray-300">LGPD</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="https://wa.me/5531985668633?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20do%20Studio%20W%20Fernandes." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-40 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-emerald-600 transition-all transform hover:scale-110 border-2 border-white/20"
+       aria-label="Atendimento via WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- JAVASCRIPT LÓGICA DE INTERAÇÃO -->
+    <script>
+        // Drawer Menu Toggle
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            const backdrop = document.getElementById('drawer-backdrop');
+            
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Header Background Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-1', 'shadow-2xl', 'bg-black/90');
+            } else {
+                header.classList.remove('py-1', 'shadow-2xl', 'bg-black/90');
+            }
+        });
+    </script>
+</body>
+</html>
